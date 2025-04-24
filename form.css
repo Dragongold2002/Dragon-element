@@ -1,0 +1,69 @@
+body{
+  background: radial-gradient( circle, lightyellow, gold, goldenrod);
+}
+h1{
+  font-size: 32px;
+  font-family: fantasy;
+  color: maroon;
+  text-shadow: 3px 1px chocolate;
+  font-weight:700;
+}
+form{
+  font-size: 24px;
+  font-family: fantasy;
+  color: darkred;
+  text-shadow: 3px 1px chocolate;
+  font-weight:700;
+}
+.fi {
+  color: yellow;
+  font-weight: bold;
+  text-shadow: 0 0 5px orange, 0 0 10px red, 0 0 20px red, 2px 2px 5px darkred;
+}
+.wa {
+  color: #0077ff;
+  font-weight: bold;
+  position: relative;
+  text-shadow:
+    0 0 4px #00bfff,
+    0 0 10px #0044cc;
+  padding-bottom: 2px;
+}
+
+.wa::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  background: #0077ff;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.lig {
+  color: white;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px white,
+    0 0 10px #aaf,
+    0 0 20px #ccf;
+}
+.ea {
+  color: #555;
+  font-weight: bold;
+  text-shadow:
+    1px 1px 0 #333,
+    2px 2px 1px #111,
+    -1px -1px 1px #666;
+}
+
+
+select{
+  width: 25%;
+}
+option{
+  color: darkgoldenrod;
+  text-shadow: 3px 2px chocolate;
+  background-color: lightgreen;
+}
