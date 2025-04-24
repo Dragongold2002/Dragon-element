@@ -100,8 +100,7 @@
         const tnt = document.createElement('img');
         tnt.src = 'tnt.gif';
         tnt.classList.add('tnt');
-
-        // Випадкове вибрання напрямку анімації
+        
         const rand = Math.random();
         if (rand < 0.25) {
           tnt.style.animationName = 'flyFromLeft';
@@ -117,10 +116,10 @@
           tnt.style.bottom = `${Math.random() * 100}vh`;
         }
 
-        // Додаємо TNT до body
+        
         document.body.appendChild(tnt);
 
-        // Після завершення анімації, прибираємо елемент з DOM
+        
         setTimeout(() => tnt.remove(), 4000);
       }
     }
@@ -133,14 +132,12 @@
   const data = new FormData(form);
   let text = '';
 
-  // Додаємо тільки заповнені значення
+
   for (const [key, value] of data.entries()) {
-    if (value.trim() !== '') {  // Ігноруємо порожні значення
+    if (value.trim() !== '') {  
       text += `${key}: ${value}\n`;
     }
   }
-
-  // Перевірка, чи заповнені обов'язкові поля
   const requiredFields = ['fname', 'lname', 'age'];
   let filled = requiredFields.every(id => document.getElementById(id).value.trim() !== '');
 
