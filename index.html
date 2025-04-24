@@ -2,49 +2,52 @@
 <html lang="en">
 <head>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-   <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="form.css">
   <title>Data about a Dragon</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzip/3.0.6/pizzip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.25.2/docxtemplater.min.js"></script>
+
 </head>
 <body>
   <h1>Dragon's choice</h1>
   <form action="" name="example">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname" size="15" maxlength="20"><br><br>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname" size="15" maxlength="20"><br><br>
     <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname" size="30"><br><br>
-     <label for="age">Age of the Dragon:</label>
-  <input type="number" id="age" name="age" ><br><br>
-     <label for="naf">Inactive field:</label>
-  <input type="text" id="naf" name="naf" size="15" maxlength="20" value="не активне поле" disabled><br><br>
+    <input type="text" id="lname" name="lname" size="30"><br><br>
+    <label for="age">Age of the Dragon:</label>
+    <input type="number" id="age" name="age"><br><br>
+    <label for="naf">Inactive field:</label>
+    <input type="text" id="naf" name="naf" size="15" maxlength="20" value="не активне поле" disabled><br><br>
     <label for="readonly">Note:</label>
-  <input type="text" id="readonly" name="readonly" size="15" value="Return does not belong" readonly><br><br>
-     <label for="secret">Secret spell Dragon breath:</label>
-  <input type="secret" id="secret" name="secret" size="15" value=""><br><br>
+    <input type="text" id="readonly" name="readonly" size="15" value="Return does not belong" readonly><br><br>
+    <label for="secret">Secret spell Dragon breath:</label>
+    <input type="text" id="secret" name="secret" size="15" value=""><br><br>
     <hr>
     <h2>Dragon element:</h2>
-     <input type="radio" id="fire" name="fav_language" value="Fire">
-     <label for="fire" class="fi">Fire</label><br>
-     <input type="radio" id="water" name="fav_language" value="Water" >
-     <label for="water" class="wa">Water</label><br>    
+    <input type="radio" id="fire" name="fav_language" value="Fire">
+    <label for="fire" class="fi">Fire</label><br>
+    <input type="radio" id="water" name="fav_language" value="Water">
+    <label for="water" class="wa">Water</label><br>
     <input type="radio" id="lightnig" name="fav_language" value="Lightnig">
     <label for="lightnig" class="lig">Lightnig</label><br>
-     <input type="radio" id="earthy" name="fav_language" value="Earthy" >
-     <label for="earthy" class="ea">Earthy</label><br>  
-     <input type="radio" id="basic" name="fav_language" value="Basic" >
-     <label for="basic">Basic</label><br><br>
+    <input type="radio" id="earthy" name="fav_language" value="Earthy">
+    <label for="earthy" class="ea">Earthy</label><br>
+    <input type="radio" id="basic" name="fav_language" value="Basic">
+    <label for="basic">Basic</label><br><br>
     <hr>
     <h2>What is a Dragon for:</h2>
-    <input type="checkbox"  name="vehicle1" value="Shoot a fireball">
+    <input type="checkbox" name="vehicle1" value="Shoot a fireball">
     <label for="vehicle1">Shoot a fireball</label>
-    <input type="checkbox"  name="vehicle2" value="Air and land race">
+    <input type="checkbox" name="vehicle2" value="Air and land race">
     <label for="vehicle2">Air and lang race</label>
-    <input type="checkbox"  name="vehicle3" value="Protection">
+    <input type="checkbox" name="vehicle3" value="Protection">
     <label for="vehicle3">Protection</label>
-     <input type="checkbox"  name="vehicle4" value="Pet">
+    <input type="checkbox" name="vehicle4" value="Pet">
     <label for="vehicle4">Pet</label>
     <hr><br>
-    <h3>Not obligatory!!! Favorite type of Dragon:</h3>
-    <select name="pets" id="pet-select" >
+    <h3> Favorite type of Dragon:</h3>
+    <select name="pets" id="pet-select">
       <option value="">--Please choose an option--</option>
       <option value="dragon">Dragon</option>
       <option value="hydra">Hydra</option>
@@ -60,7 +63,7 @@
       <option value="amphithere">Amphithere</option>
       <option value="drake">Drake</option>
     </select>
-     <select name="pets" id="pet-select" size="3" multiple>
+    <select name="pets" id="pet-select" size="3" multiple>
       <option value=""></option>
       <option value="dragonfire">Dragon Fire</option>
       <option value="dragonwater">Dragon water</option>
@@ -68,10 +71,10 @@
       <option value="dragonmetal">Dragon metal</option>
       <option value="dragonfairy">Dragon fairy</option>
     </select>
-    <hr><h2>Addition of the forearm:</h2>
-      <textarea name="text1" id="text1" cols="30" rows="5"></textarea>
-      <textarea name="text1" id="text1" cols="20" rows="5"></textarea>
-      <textarea name="text1" id="text1" cols="10" rows="5"></textarea>
+    <hr><h2>Preferences to the Dragon:</h2>
+    <textarea name="text1" id="text1" cols="30" rows="5"></textarea>
+    <textarea name="text1" id="text1" cols="20" rows="5"></textarea>
+    <textarea name="text1" id="text1" cols="10" rows="5"></textarea>
     <textarea name="text1" id="text1"></textarea>
     <hr>
     <label for="downlnad">Downlnad</label>
@@ -84,5 +87,85 @@
       Надіслати
     </button>
   </form>
+  <hr>
+  <label for="tntCount">Кількість TNT:</label>
+  <input type="number" id="tntCount" value="" min="1" max="1000">
+  <button type="button" onclick="spawnAnimatedTNT()">Випустити TNT</button>
+
+  <script>
+    function spawnAnimatedTNT() {
+      const count = parseInt(document.getElementById('tntCount').value);
+
+      for (let i = 0; i < count; i++) {
+        const tnt = document.createElement('img');
+        tnt.src = 'tnt.gif';
+        tnt.classList.add('tnt');
+
+        // Випадкове вибрання напрямку анімації
+        const rand = Math.random();
+        if (rand < 0.25) {
+          tnt.style.animationName = 'flyFromLeft';
+          tnt.style.left = `${Math.random() * 100}vw`;
+        } else if (rand < 0.5) {
+          tnt.style.animationName = 'flyFromRight';
+          tnt.style.right = `${Math.random() * 100}vw`;
+        } else if (rand < 0.75) {
+          tnt.style.animationName = 'flyFromTop';
+          tnt.style.top = `${Math.random() * 100}vh`;
+        } else {
+          tnt.style.animationName = 'flyFromBottom';
+          tnt.style.bottom = `${Math.random() * 100}vh`;
+        }
+
+        // Додаємо TNT до body
+        document.body.appendChild(tnt);
+
+        // Після завершення анімації, прибираємо елемент з DOM
+        setTimeout(() => tnt.remove(), 4000);
+      }
+    }
+  </script>
+  <script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = new FormData(form);
+  let text = '';
+
+  // Додаємо тільки заповнені значення
+  for (const [key, value] of data.entries()) {
+    if (value.trim() !== '') {  // Ігноруємо порожні значення
+      text += `${key}: ${value}\n`;
+    }
+  }
+
+  // Перевірка, чи заповнені обов'язкові поля
+  const requiredFields = ['fname', 'lname', 'age'];
+  let filled = requiredFields.every(id => document.getElementById(id).value.trim() !== '');
+
+  if (filled) {
+    const doc = new PizZip();
+    const docTemplate = `
+      <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+        <w:body>
+          <w:p><w:r><w:t>Dragon's Choice Form</w:t></w:r></w:p>
+          <w:p><w:r><w:t>${text}</w:t></w:r></w:p>
+        </w:body>
+      </w:document>`;
+
+    doc.file('word/document.xml', docTemplate);
+
+    const docBlob = doc.generate({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(docBlob);
+    link.download = 'dragon_form_answers.docx';
+    link.click();
+  } else {
+    alert('Будь ласка, заповніть усі обов’язкові поля!');
+  }
+});
+  </script>
 </body>
 </html>

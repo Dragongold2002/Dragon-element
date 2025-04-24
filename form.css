@@ -1,6 +1,34 @@
 body{
   background: radial-gradient( circle, lightyellow, gold, goldenrod);
 }
+   .tnt {
+      position: absolute;
+      animation-duration: 4s;
+      animation-timing-function: ease-out;
+      z-index: 9999;
+     width:80px;
+     height: 80px;
+    }
+
+    @keyframes flyFromLeft {
+      0% { transform: translateX(-100vw); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes flyFromRight {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes flyFromTop {
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes flyFromBottom {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(0); }
+    }
 h1{
   font-size: 32px;
   font-family: fantasy;
