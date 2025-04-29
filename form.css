@@ -1,34 +1,59 @@
 body{
   background: radial-gradient( circle, lightyellow, gold, goldenrod);
 }
-   .tnt {
-      position: absolute;
-      animation-duration: 4s;
-      animation-timing-function: ease-out;
-      z-index: 9999;
-     width:80px;
-     height: 80px;
-    }
 
-    @keyframes flyFromLeft {
-      0% { transform: translateX(-100vw); }
-      100% { transform: translateX(0); }
-    }
+  .tnt {
+    position: absolute;
+    width: 50px; /* Фіксована ширина */
+    height: 50px; /* Фіксована висота */
+    z-index: 1000; /* Високий z-index, щоб елементи не перекривали інші */
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+  }
 
-    @keyframes flyFromRight {
-      0% { transform: translateX(100vw); }
-      100% { transform: translateX(0); }
+  @keyframes flyFromLeft {
+    from {
+      left: -10vw;
+      top: 50vh;
     }
+    to {
+      left: 50vw;
+      top: 50vh;
+    }
+  }
 
-    @keyframes flyFromTop {
-      0% { transform: translateY(-100vh); }
-      100% { transform: translateY(0); }
+  @keyframes flyFromRight {
+    from {
+      right: -10vw;
+      top: 50vh;
     }
+    to {
+      right: 50vw;
+      top: 50vh;
+    }
+  }
 
-    @keyframes flyFromBottom {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(0); }
+  @keyframes flyFromTop {
+    from {
+      top: -10vh;
+      left: 50vw;
     }
+    to {
+      top: 50vh;
+      left: 50vw;
+    }
+  }
+
+  @keyframes flyFromBottom {
+    from {
+      bottom: -10vh;
+      left: 50vw;
+    }
+    to {
+      bottom: 50vh;
+      left: 50vw;
+    }
+  }
 h1{
   font-size: 32px;
   font-family: fantasy;

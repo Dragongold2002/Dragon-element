@@ -4,27 +4,24 @@
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="form.css">
   <title>Data about a Dragon</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzip/3.0.6/pizzip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.25.2/docxtemplater.min.js"></script>
-
 </head>
 <body>
   <h1>Dragon's choice</h1>
   <form action="" name="example">
-    <label for="fname">First name:</label>
+    <label for="fname">1)First name:</label>
     <input type="text" id="fname" name="fname" size="15" maxlength="20"><br><br>
-    <label for="lname">Last name:</label>
+    <label for="lname">2)Last name:</label>
     <input type="text" id="lname" name="lname" size="30"><br><br>
-    <label for="age">Age of the Dragon:</label>
+    <label for="age">3)Age of the Dragon:</label>
     <input type="number" id="age" name="age"><br><br>
-    <label for="naf">Inactive field:</label>
+    <label for="naf">:(Inactive field:</label>
     <input type="text" id="naf" name="naf" size="15" maxlength="20" value="не активне поле" disabled><br><br>
-    <label for="readonly">Note:</label>
+    <label for="readonly">!!!Note:!!!</label>
     <input type="text" id="readonly" name="readonly" size="15" value="Return does not belong" readonly><br><br>
-    <label for="secret">Secret spell Dragon breath:</label>
+    <label for="secret">4)Secret spell Dragon breath:</label>
     <input type="text" id="secret" name="secret" size="15" value=""><br><br>
     <hr>
-    <h2>Dragon element:</h2>
+    <h2>5)Dragon element:</h2>
     <input type="radio" id="fire" name="fav_language" value="Fire">
     <label for="fire" class="fi">Fire</label><br>
     <input type="radio" id="water" name="fav_language" value="Water">
@@ -36,7 +33,7 @@
     <input type="radio" id="basic" name="fav_language" value="Basic">
     <label for="basic">Basic</label><br><br>
     <hr>
-    <h2>What is a Dragon for:</h2>
+    <h2>6)What is a Dragon for:</h2>
     <input type="checkbox" name="vehicle1" value="Shoot a fireball">
     <label for="vehicle1">Shoot a fireball</label>
     <input type="checkbox" name="vehicle2" value="Air and land race">
@@ -46,7 +43,7 @@
     <input type="checkbox" name="vehicle4" value="Pet">
     <label for="vehicle4">Pet</label>
     <hr><br>
-    <h3> Favorite type of Dragon:</h3>
+    <h3>7) Favorite type of Dragon:</h3>
     <select name="pets" id="pet-select">
       <option value="">--Please choose an option--</option>
       <option value="dragon">Dragon</option>
@@ -71,7 +68,7 @@
       <option value="dragonmetal">Dragon metal</option>
       <option value="dragonfairy">Dragon fairy</option>
     </select>
-    <hr><h2>Preferences to the Dragon:</h2>
+    <hr><h2>8)Preferences to the Dragon:</h2>
     <textarea name="text1" id="text1" cols="30" rows="5"></textarea>
     <textarea name="text1" id="text1" cols="20" rows="5"></textarea>
     <textarea name="text1" id="text1" cols="10" rows="5"></textarea>
@@ -80,6 +77,13 @@
     <label for="downlnad">Downlnad</label>
     <input type="file" name="downlnad">
     <hr>
+    <h2>9) Gender of the Dragon:</h2>
+    <input type="radio" id="male" name="gender" value="Boy">
+    <label for="male">Boy</label><br>
+    <input type="radio" id="female" name="gender" value="Girl">
+    <label for="female">Girl</label><br><br>
+    <h2>10) What can the Dragon do:</h2>
+    <textarea name="skills" id="skills" rows="3" cols="40" placeholder="E.g. Fly, spit fire, talk..."></textarea><br><br>
     <input type="submit" name="submit" id="submit" value="Submit">
     <input type="reset" value="Reset">
     <button type="submit">
@@ -93,76 +97,101 @@
   <button type="button" onclick="spawnAnimatedTNT()">Випустити TNT</button>
 
   <script>
-    function spawnAnimatedTNT() {
-      const count = parseInt(document.getElementById('tntCount').value);
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-      for (let i = 0; i < count; i++) {
-        const tnt = document.createElement('img');
-        tnt.src = 'tnt.gif';
-        tnt.classList.add('tnt');
-        
-        const rand = Math.random();
-        if (rand < 0.25) {
-          tnt.style.animationName = 'flyFromLeft';
-          tnt.style.left = `${Math.random() * 100}vw`;
-        } else if (rand < 0.5) {
-          tnt.style.animationName = 'flyFromRight';
-          tnt.style.right = `${Math.random() * 100}vw`;
-        } else if (rand < 0.75) {
-          tnt.style.animationName = 'flyFromTop';
-          tnt.style.top = `${Math.random() * 100}vh`;
-        } else {
-          tnt.style.animationName = 'flyFromBottom';
-          tnt.style.bottom = `${Math.random() * 100}vh`;
-        }
+    const missing = [];
+    const fname = document.getElementById("fname").value.trim();
+    const lname = document.getElementById("lname").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const secret = document.getElementById("secret").value.trim();
+    const type = document.querySelector("input[name='fav_language']:checked");
+    const dragonType = document.getElementById("pet-select").value;
+    const gender = document.querySelector("input[name='gender']:checked");
+    const skills = document.getElementById("skills").value.trim();
 
-        
-        document.body.appendChild(tnt);
+    if (!fname) missing.push("1) First name");
+    if (!lname) missing.push("2) Last name");
+    if (!age) missing.push("3) Age of the Dragon");
+    if (!secret) missing.push("4) Secret spell Dragon breath");
+    if (!type) missing.push("5) Dragon element");
+    if (!gender) missing.push("9) Gender of the Dragon");
 
-        
-        setTimeout(() => tnt.remove(), 4000);
-      }
+    if (missing.length > 0) {
+      alert("Будь ласка, заповніть такі поля:\n" + missing.join("\n"));
+      return;
     }
+
+    // Отримуємо значення чекбоксів
+    const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
+    const purposes = Array.from(checkboxes).map(cb => cb.value).join(", ") || "None";
+
+    // Отримуємо всі текстові поля "text1"
+    const preferences = Array.from(document.querySelectorAll("textarea#text1"))
+      .map(t => t.value.trim()).filter(v => v).join(" ");
+
+    // Визначення розміру дракона
+    let dragonSize = "Unknown";
+    const numericAge = parseInt(age);
+    if (!isNaN(numericAge)) {
+      if (numericAge <= 10) dragonSize = "Small";
+      else if (numericAge <= 50) dragonSize = "Medium";
+      else if (numericAge <= 200) dragonSize = "Large";
+      else dragonSize = "Titanic";
+    }
+
+    let result = `--- Dragon Info ---
+1) First name: ${fname}
+2) Last name: ${lname}
+3) Age: ${age}
+4) Secret spell: ${secret}
+5) Dragon element: ${type.value}
+6) What is a Dragon for: ${purposes}
+7) Favorite type of Dragon: ${dragonType}
+8) Preferences: ${preferences || "None"}
+9) Gender: ${gender.value}
+10) Dragon size: ${dragonSize}
+11) What can the Dragon do: ${skills || "Nothing special"}`;
+
+    alert(result);
+  });
   </script>
+
   <script>
-    document.querySelector('form').addEventListener('submit', function (e) {
-  e.preventDefault();
+  function spawnAnimatedTNT() {
+    const count = parseInt(document.getElementById('tntCount').value);
 
-  const form = e.target;
-  const data = new FormData(form);
-  let text = '';
+    for (let i = 0; i < count; i++) {
+      const tnt = document.createElement('img');
+      tnt.src = 'tnt.gif';
+      tnt.classList.add('tnt');
 
+      // Випадкова затримка для кожного TNT
+      const delay = Math.random() * 2; // затримка до 2 секунд
 
-  for (const [key, value] of data.entries()) {
-    if (value.trim() !== '') {  
-      text += `${key}: ${value}\n`;
+      // Випадкова позиція для анімації
+      const rand = Math.random();
+      if (rand < 0.25) {
+        tnt.style.animationName = 'flyFromLeft';
+        tnt.style.left = `${Math.random() * 100}vw`;
+      } else if (rand < 0.5) {
+        tnt.style.animationName = 'flyFromRight';
+        tnt.style.right = `${Math.random() * 100}vw`;
+      } else if (rand < 0.75) {
+        tnt.style.animationName = 'flyFromTop';
+        tnt.style.top = `${Math.random() * 100}vh`;
+      } else {
+        tnt.style.animationName = 'flyFromBottom';
+        tnt.style.bottom = `${Math.random() * 100}vh`;
+      }
+
+      // Додаємо затримку для кожного TNT
+      tnt.style.animationDelay = `${delay}s`;
+
+      document.body.appendChild(tnt);
+      setTimeout(() => tnt.remove(), 4000);
     }
   }
-  const requiredFields = ['fname', 'lname', 'age'];
-  let filled = requiredFields.every(id => document.getElementById(id).value.trim() !== '');
-
-  if (filled) {
-    const doc = new PizZip();
-    const docTemplate = `
-      <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-        <w:body>
-          <w:p><w:r><w:t>Dragon's Choice Form</w:t></w:r></w:p>
-          <w:p><w:r><w:t>${text}</w:t></w:r></w:p>
-        </w:body>
-      </w:document>`;
-
-    doc.file('word/document.xml', docTemplate);
-
-    const docBlob = doc.generate({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
-
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(docBlob);
-    link.download = 'dragon_form_answers.docx';
-    link.click();
-  } else {
-    alert('Будь ласка, заповніть усі обов’язкові поля!');
-  }
-});
-  </script>
+</script>
 </body>
 </html>
