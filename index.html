@@ -95,7 +95,7 @@
   <input type="number" id="tntCount" value="" min="1" max="1000">
   <button type="button" onclick="spawnAnimatedTNT()">Випустити TNT</button>
 
-  <script>
+<script>
   document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -105,9 +105,7 @@
     const age = document.getElementById("age").value.trim();
     const secret = document.getElementById("secret").value.trim();
     const type = document.querySelector("input[name='fav_language']:checked");
-    const dragonType = document.getElementById("pet-select").value;
     const gender = document.querySelector("input[name='gender']:checked");
-    const skills = document.getElementById("skills").value.trim();
 
     if (!fname) missing.push("1) First name");
     if (!lname) missing.push("2) Last name");
@@ -121,15 +119,12 @@
       return;
     }
 
-    // Отримуємо значення чекбоксів
     const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
     const purposes = Array.from(checkboxes).map(cb => cb.value).join(", ") || "None";
 
-    // Отримуємо всі текстові поля "text1"
     const preferences = Array.from(document.querySelectorAll("textarea#text1"))
       .map(t => t.value.trim()).filter(v => v).join(" ");
 
-    // Визначення розміру дракона
     let dragonSize = "Unknown";
     const numericAge = parseInt(age);
     if (!isNaN(numericAge)) {
@@ -139,22 +134,31 @@
       else dragonSize = "Titanic";
     }
 
-    let result = `--- Dragon Info ---
-1) First name: ${fname}
-2) Last name: ${lname}
-3) Age: ${age}
-4) Secret spell: ${secret}
-5) Dragon element: ${type.value}
-6) What is a Dragon for: ${purposes}
-7) Favorite type of Dragon: ${dragonType}
-8) Preferences: ${preferences || "None"}
-9) Gender: ${gender.value}
-10) Dragon size: ${dragonSize}
-11) What can the Dragon do: ${skills || "Nothing special"}`;
+    const result = `
+      --- Dragon Data Summary ---
+      Name: ${fname} ${lname}
+      Age: ${age} (${dragonSize})
+      Secret Spell: ${secret}
+      Element: ${type.value}
+      Gender: ${gender.value}
+      Purposes: ${purposes}
+      Preferences: ${preferences || "None"}
+    `;
 
     alert(result);
   });
-  </script>
+
+  function spawnAnimatedTNT() {
+    const count = parseInt(document.getElementById("tntCount").value);
+    if (isNaN(count) || count < 1) {
+      alert("Введи правильну кількість TNT (мінімум 1)");
+      return;
+    }
+    alert(`TNT (${count}) активовано!`);
+    // Твоя анімація або ефекти тут...
+  }
+</script>
+
 
   <script>
   function spawnAnimatedTNT() {
